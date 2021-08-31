@@ -8,3 +8,4 @@ const Information = () =>{
         </View>
     )
 }
+export default Information
