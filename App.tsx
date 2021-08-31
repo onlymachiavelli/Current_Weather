@@ -9,8 +9,21 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen component={Home} name="Home" />
-        <Stack.Screen component={Information} name="Information" />
+        <Stack.Screen component={Home} name="Home"
+          options={{
+            title: "Home",
+            headerTintColor: "#fff",
+            headerStyle: {
+              backgroundColor: "#323232",
+            }
+          }} />
+        <Stack.Screen component={Information} name="Information" options={{
+          title: "Information",
+          headerTintColor: "#fff",
+          headerStyle: {
+            backgroundColor: "#323232",
+          }
+        }} />
       </Stack.Navigator>
     </NavigationContainer>
   )
