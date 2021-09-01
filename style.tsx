@@ -44,5 +44,31 @@ export const Style = StyleSheet.create({
     inpLogo: {
 
         marginTop: 15,
+    },
+    button: {
+        alignSelf: "center",
+        width: 200,
+        height: 50,
+        backgroundColor: "#429EBB",
+        borderWidth: 1,
+        borderColor: "#fff",
+        borderRadius: 3,
+        marginTop: 20,
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    buttontxt: {
+        color: "#fff",
+        fontSize: 16
+    },
+    current_block: {
+        alignSelf: "center",
+        width: 250,
+        height: 80,
+        backgroundColor: "#177593",
+        borderRadius: 5,
+        marginTop: 20,
+        alignItems: "center",
+        justifyContent: "center"
     }
 })
