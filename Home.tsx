@@ -23,6 +23,10 @@ const Home = () => {
                 <Text style={Style.coutrytext}>
                     {Current_Country}
                 </Text>
+
+                <View style={Style.api}>
+                    <Text style={Style.apitxt}>API CALL Time : 18.06</Text>
+                </View>
             </View>
             <ScrollView style={Style.main}>
                 <View style={Style.input}>

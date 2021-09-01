@@ -70,5 +70,12 @@ export const Style = StyleSheet.create({
         marginTop: 20,
         alignItems: "center",
         justifyContent: "center"
+    },
+    api: {
+        position: "absolute",
+        right: 20,
+    },
+    apitxt: {
+        color: "#fff",
     }
 })
