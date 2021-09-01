@@ -77,5 +77,15 @@ export const Style = StyleSheet.create({
     },
     apitxt: {
         color: "#fff",
+    },
+    status_svg: {
+        alignSelf: "center",
+        marginTop: 40,
+    },
+    type: {
+        color: "#fff",
+        fontSize: 20,
+        alignSelf: "center",
+        marginTop: 20,
     }
 })

@@ -3,7 +3,7 @@ import {
     View, Text, ScrollView, TextInput, TouchableOpacity
 } from 'react-native'
 import { Style } from './style'
-import { Current_svg, Search, Loc } from './svg'
+import { Current_svg, Search, Loc, NightCloudy } from './svg'
 import DetectGeo from './Geo'
 let Current_Country = DetectGeo()
 Current_Country += (Current_Country === "Tunisia" || "tunis" || "Tunis" || "tunisia" ? " Lkalba" : "")
@@ -45,8 +45,11 @@ const Home = () => {
                 <View style={Style.current_block}>
                     <Loc />
                     <Text style={{ color: "#fff", marginTop: 5, fontSize: 18, }}>{Location}</Text>
-
                 </View>
+                <View style={Style.status_svg}>
+                    <NightCloudy />
+                </View>
+                <Text style={Style.type}>Night Cloudy</Text>
             </ScrollView>
         </View>
     )
