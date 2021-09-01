@@ -15,6 +15,34 @@ export const Style = StyleSheet.create({
     },
     header: {
         marginTop: 20,
+    },
+    main: {
+        width: "100%",
+        height: "auto"
     }
+    , input: {
+        width: "83%",
+        height: 50,
+        backgroundColor: "#429EBB",
+        alignSelf: "center",
+        marginTop: 20,
+        justifyContent: "center",
+        paddingLeft: 20,
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: "#fff",
+        overflow: "hidden",
+    },
+    inp: {
+        marginLeft: 30,
+        marginTop: -30,
+        color: "#fff",
+        padding: 10,
+        width: "85%",
 
+    },
+    inpLogo: {
+
+        marginTop: 15,
+    }
 })
