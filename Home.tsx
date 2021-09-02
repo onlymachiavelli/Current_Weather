@@ -4,10 +4,28 @@ import {
 } from 'react-native'
 import { Style } from './style'
 import { Current_svg, Search, Loc, NightCloudy } from './svg'
-import DetectGeo from './GeoAPI'
-let Current_Country = DetectGeo().country
-Current_Country += (Current_Country === "Tunisia" || "tunis" || "Tunis" || "tunisia" ? " Lkalba" : "")
-console.log(DetectGeo())
+
+const DetectGeo = async () => {
+    const Request = await fetch("http://ip-api.com/json")
+    const Response = await Request.json()
+    return Response
+}
+
+const   Current_Country  =DetectGeo()
+
+console.log(Current_Country)
+
+
+//Current_Country += (Current_Country === "Tunisia" ? " Lkalba" : "")
+
+
+
+
+
+
+
+
+
 const Checkinp = (value:String) => {
     let res = value[0].toUpperCase()
     for (let i = 1; i < value.length; i++) res += value[i].toLowerCase()
