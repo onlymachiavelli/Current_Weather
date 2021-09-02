@@ -5,8 +5,9 @@ import {
 import { Style } from './style'
 import { Current_svg, Search, Loc, NightCloudy } from './svg'
 import DetectGeo from './GeoAPI'
-let Current_Country = DetectGeo()
+let Current_Country = DetectGeo().country
 Current_Country += (Current_Country === "Tunisia" || "tunis" || "Tunis" || "tunisia" ? " Lkalba" : "")
+console.log(DetectGeo())
 const Checkinp = (value:String) => {
     let res = value[0].toUpperCase()
     for (let i = 1; i < value.length; i++) res += value[i].toLowerCase()
