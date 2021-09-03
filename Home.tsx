@@ -21,18 +21,23 @@ const Checkinp = (value) => {
 }
 
 const useCountry = () =>{
-    const [country, setCountry] = useState("")
+    const [Currentcountry, setCurrentCountry] = useState("")
+    const [ToCountry, setToCountry] = useState("")
     useEffect(()=>{
-        DetectGeo().then(res => {setCountry(res)})
+        DetectGeo().then(res => {
+            setCurrentCountry(res)
+            setToCountry(res)
+        })
+
     }, [])
-    return country
+    return {Currentcountry,ToCountry}
 }
 
-
-//Current_Country += (Current_Country === "Tunisia" ? " Lkalba" : "")
 const Home = () => {
-    // const [Location, setLocation] = useState(Current_Country)
-    const Current_Country = useCountry()
+    
+    let Current_Country = useCountry().Currentcountry
+    Current_Country += (Current_Country === "Tunisia" ? " Lkalba" : "")
+    const Location = useCountry().ToCountry
     return (
         <View style={Style.Home_container} >
             <View style={Style.header}>
