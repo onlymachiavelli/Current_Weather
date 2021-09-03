@@ -6,18 +6,7 @@ import {
 import { Style } from './style'
 import { Current_svg, Search, Loc, NightCloudy } from './svg'
 import DetectGeo from './GeoAPI'
-
-
-
-
-
-
-const  Current_Country = DetectGeo()
-
-
-
-
-//Current_Country += (Current_Country === "Tunisia" ? " Lkalba" : "")
+let Current_Country = ""
 
 
 
@@ -27,11 +16,24 @@ const  Current_Country = DetectGeo()
 
 
 
-const Checkinp = (value:String) => {
+
+
+
+
+
+
+const Checkinp = (value) => {
     let res = value[0].toUpperCase()
     for (let i = 1; i < value.length; i++) res += value[i].toLowerCase()
     return res
 }
+
+DetectGeo()
+console.log(Current_Country)
+
+
+
+//Current_Country += (Current_Country === "Tunisia" ? " Lkalba" : "")
 const Home = () => {
     const [Location, setLocation] = useState(Current_Country)
     return (
