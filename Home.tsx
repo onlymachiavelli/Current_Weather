@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import 'axios'
 import {
     View, Text, ScrollView, TextInput, TouchableOpacity
 } from 'react-native'
@@ -10,10 +11,8 @@ const DetectGeo = async () => {
     const Response = await Request.json()
     return Response
 }
+let Current_Country = ""
 
-const   Current_Country  =DetectGeo()
-
-console.log(Current_Country)
 
 
 //Current_Country += (Current_Country === "Tunisia" ? " Lkalba" : "")
