@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import {
     View, Text, ScrollView, TextInput, TouchableOpacity
@@ -6,14 +6,6 @@ import {
 import { Style } from './style'
 import { Current_svg, Search, Loc, NightCloudy } from './svg'
 import DetectGeo from './GeoAPI'
-let Current_Country = ""
-
-
-
-
-
-
-
 
 
 
@@ -28,14 +20,19 @@ const Checkinp = (value) => {
     return res
 }
 
-DetectGeo()
-console.log(Current_Country)
-
+const useCountry = () =>{
+    const [country, setCountry] = useState("")
+    useEffect(()=>{
+        DetectGeo().then(res => {setCountry(res)})
+    }, [])
+    return country
+}
 
 
 //Current_Country += (Current_Country === "Tunisia" ? " Lkalba" : "")
 const Home = () => {
-    const [Location, setLocation] = useState(Current_Country)
+    // const [Location, setLocation] = useState(Current_Country)
+    const Current_Country = useCountry()
     return (
         <View style={Style.Home_container} >
             <View style={Style.header}>

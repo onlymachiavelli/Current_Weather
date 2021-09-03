@@ -1,10 +1,8 @@
-import "axios"
 import axios from "axios"
 const DetectGeo = async  () => {
-    const Response = await (await axios.get(`http://ip-api.com/json`).then((Response)=>{
-        Response.data.country
-    }))
-    console.log(Response)
+    const Response = await axios.get(`http://ip-api.com/json`).then(r => r.data)
+    return Response.country
+    
     
 }
 
