@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
-import 'axios'
+import axios from 'axios'
 import {
     View, Text, ScrollView, TextInput, TouchableOpacity
 } from 'react-native'
 import { Style } from './style'
 import { Current_svg, Search, Loc, NightCloudy } from './svg'
+import DetectGeo from './GeoAPI'
 
-const DetectGeo = async () => {
-    const Request = await fetch("http://ip-api.com/json")
-    const Response = await Request.json()
-    return Response
-}
-let Current_Country = ""
+
+
+
+
+
+const  Current_Country = DetectGeo()
+
 
 
 
