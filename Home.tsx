@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import {
     View, Text, ScrollView, TextInput, TouchableOpacity
 } from 'react-native'
@@ -11,6 +10,17 @@ const Checkinp = (value:String) => {
     let res = value[0].toUpperCase()
     for (let i = 1; i < value.length; i++) res += value[i].toLowerCase()
     return res
+}
+const SVGS ={
+    0:{"clear sky":[<ClearSkyDay/>, <ClearSkyNight/>]},
+    1:{"few clouds":[<FewCloudsDay/>, <FewCloudsNight/>]},
+    2:{"scattered clouds":<ScatteredClouds/>},
+    3:{"broken clouds":<BrokenClouyds/>},
+    4:{"shower rain" :<ShowerRain/>},
+    5:{"rain":<></>},
+    6:{"thunderstorm":<Thunderstorm/>},
+    7:{"snow":<Snow/>},
+    8:{"mist":<Mist/>}
 }
 const APICALLTIME = () =>{
     let Time
