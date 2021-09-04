@@ -6,7 +6,7 @@ import {
 import { Style } from './style'
 import { Current_svg, Search, Loc, ShowerRain, ClearSkyDay, ClearSkyNight, Snow, Thunderstorm, FewCloudsDay, FewCloudsNight, ScatteredClouds, BrokenClouyds, Mist } from './svg'
 import DetectGeo from './GeoAPI'
-
+import  GetWeather  from './WeatherAPI'
 const Checkinp = (value:String) => {
     let res = value[0].toUpperCase()
     for (let i = 1; i < value.length; i++) res += value[i].toLowerCase()
