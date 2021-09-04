@@ -30,7 +30,7 @@ const useCountry = () =>{
         })
 
     }, [])
-    return {Currentcountry,ToCountry}
+    return {Currentcountry,ToCountry, setCurrentCountry, setToCountry}
 }
 
 const Home = () => {
@@ -38,6 +38,9 @@ const Home = () => {
     let Current_Country = useCountry().Currentcountry
     Current_Country += (Current_Country === "Tunisia" ? " Lkalba" : "")
     const Location = useCountry().ToCountry
+    
+
+    
     return (
         <View style={Style.Home_container} >
             <View style={Style.header}>
