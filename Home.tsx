@@ -26,6 +26,8 @@ const useCountry = () =>{
     return {Currentcountry,ToCountry, setCurrentCountry, setToCountry}
 }
 const useWeather = () =>{
+    
+    const [WeatherGeo, SetWeatherGeo] = useState(useCountry().ToCountry)
 
     const [WeatherStats, setWeatherStats] = useState({
         Temp:"",
@@ -33,6 +35,20 @@ const useWeather = () =>{
         Prec:"",
         Wind:""
     })
+    useEffect(()=>{
+        GetWeather(WeatherGeo).then(
+            Response =>{
+                setWeatherStats(
+                    {
+                        Temp:"",
+                        Hum:"",
+                        Prec:"",
+                        Wind:""
+                    }
+                )
+            }
+        )
+    }, [])
 }
 
 const Home = () => {
