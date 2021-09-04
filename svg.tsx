@@ -134,4 +134,3 @@ export const Mist = () =>{
 
     )
 }
-{ShowerRain, NightCloudy, ClearSkyDay, ClearSkyNight, Snow, Thunderstorm, FewCloudsDay, FewCloudsNight, ScatteredClouds, BrokenClouyds}

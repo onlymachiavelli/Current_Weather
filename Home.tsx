@@ -7,13 +7,6 @@ import { Style } from './style'
 import { Current_svg, Search, Loc, ShowerRain, ClearSkyDay, ClearSkyNight, Snow, Thunderstorm, FewCloudsDay, FewCloudsNight, ScatteredClouds, BrokenClouyds, Mist } from './svg'
 import DetectGeo from './GeoAPI'
 
-
-
-
-
-
-
-
 const Checkinp = (value:String) => {
     let res = value[0].toUpperCase()
     for (let i = 1; i < value.length; i++) res += value[i].toLowerCase()
@@ -40,8 +33,6 @@ const useWeather = () =>{
         Prec:String,
         Wind:String
     })
-    
-
 }
 
 const Home = () => {
@@ -49,9 +40,7 @@ const Home = () => {
     let Current_Country = useCountry().Currentcountry
     Current_Country += (Current_Country === "Tunisia" ? " Lkalba" : "")
     const Location = useCountry().ToCountry
-    
 
-    
     return (
         <View style={Style.Home_container} >
             <View style={Style.header}>
