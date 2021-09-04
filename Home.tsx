@@ -33,7 +33,8 @@ const useWeather = () =>{
         Temp:"",
         Hum:"",
         Prec:"",
-        Wind:""
+        Wind:"",
+        Time:0
     })
     useEffect(()=>{
         GetWeather(WeatherGeo).then(
@@ -43,7 +44,8 @@ const useWeather = () =>{
                         Temp:"",
                         Hum:"",
                         Prec:"",
-                        Wind:""
+                        Wind:"",
+                        Time:0
                     }
                 )
             }
