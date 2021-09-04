@@ -60,7 +60,7 @@ const useWeather = () =>{
 }
 
 const Home = () => {
-    
+    let [apiTime, setapiTime] = useState(APICALLTIME())
     let Current_Country = useCountry().Currentcountry
     Current_Country += (Current_Country === "Tunisia" ? " Lkalba" : "")
     const Location = useCountry().ToCountry
@@ -76,7 +76,7 @@ const Home = () => {
                 </Text>
 
                 <View style={Style.api}>
-                    <Text style={Style.apitxt}>API CALL Time : 18.06</Text>
+                    <Text style={Style.apitxt}>API CALL Time : {apiTime}</Text>
                 </View>
             </View>
             <ScrollView style={Style.main}>
