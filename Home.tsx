@@ -12,7 +12,13 @@ const Checkinp = (value:String) => {
     for (let i = 1; i < value.length; i++) res += value[i].toLowerCase()
     return res
 }
-
+const APICALLTIME = () =>{
+    let Time
+    let date = new Date()
+    Time = (date.getHours() < 10 ? String(0+date.getHours()) : String(date.getHours())) + ":" + (date.getMinutes() < 10 ? String(0+date.getMinutes()) : String(date.getMinutes()))
+    return Time
+}
+console.log(APICALLTIME())
 const useCountry = () =>{
     const [Currentcountry, setCurrentCountry] = useState("")
     const [ToCountry, setToCountry] = useState("")
@@ -32,20 +38,20 @@ const useWeather = () =>{
     const [WeatherStats, setWeatherStats] = useState({
         Temp:"",
         Hum:"",
-        Prec:"",
         Wind:"",
-        Time:0
+        Time:0,
+        Description:""
     })
     useEffect(()=>{
         GetWeather(WeatherGeo).then(
             Response =>{
                 setWeatherStats(
                     {
-                        Temp:"",
-                        Hum:"",
-                        Prec:"",
-                        Wind:"",
-                        Time:0
+                        Temp:Response.main.temp,
+                        Hum:Response.main.humidity,
+                        Wind:Response.wind,
+                        Time:0,
+                        Description:Response.weather[0].description
                     }
                 )
             }
