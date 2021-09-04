@@ -11,6 +11,11 @@ const Checkinp = (value:String) => {
     for (let i = 1; i < value.length; i++) res += value[i].toLowerCase()
     return res
 }
+
+const IsItAm = (icon:String) =>{
+    if(icon[2] === "n") return false
+    return true
+}
 const SVGS ={
     0:{"clear sky":[<ClearSkyDay/>, <ClearSkyNight/>]},
     1:{"few clouds":[<FewCloudsDay/>, <FewCloudsNight/>]},
