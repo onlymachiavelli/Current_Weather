@@ -28,10 +28,10 @@ const useCountry = () =>{
 const useWeather = () =>{
 
     const [WeatherStats, setWeatherStats] = useState({
-        Temp:String,
-        Hum:String,
-        Prec:String,
-        Wind:String
+        Temp:"",
+        Hum:"",
+        Prec:"",
+        Wind:""
     })
 }
 
