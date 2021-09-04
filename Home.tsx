@@ -14,7 +14,7 @@ import DetectGeo from './GeoAPI'
 
 
 
-const Checkinp = (value) => {
+const Checkinp = (value:String) => {
     let res = value[0].toUpperCase()
     for (let i = 1; i < value.length; i++) res += value[i].toLowerCase()
     return res
@@ -31,6 +31,14 @@ const useCountry = () =>{
 
     }, [])
     return {Currentcountry,ToCountry, setCurrentCountry, setToCountry}
+}
+const useWeather = () =>{
+    const [WeatherStats, setWeatherStats] = useState({
+        Temp:String,
+        Hum:String,
+        Prec:String,
+        Wind:String
+    })
 }
 
 const Home = () => {

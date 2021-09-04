@@ -2,7 +2,7 @@
 const myAPIKey = process.env.MY_API_KEY
 
 
-export const RequestWeather =async (Country:String) =>{
+export const GetWeather =async (Country:String) =>{
     let Response
     try{
         Response = await fetch(
@@ -10,7 +10,9 @@ export const RequestWeather =async (Country:String) =>{
         ).then((Response) => Response.json())
     }
     catch(e){
-        Response = ["err",e]
+        console.log(e)
     }
     return Response
 }   
+
+

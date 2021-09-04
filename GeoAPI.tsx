@@ -9,9 +9,3 @@ const DetectGeo = async  () => {
 export default DetectGeo
 
 
-
-/*
-const Request = await fetch("http://ip-api.com/json")
-    const Response = await Request.json()
-    return Response
-*/
