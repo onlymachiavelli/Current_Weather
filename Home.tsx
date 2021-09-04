@@ -33,12 +33,15 @@ const useCountry = () =>{
     return {Currentcountry,ToCountry, setCurrentCountry, setToCountry}
 }
 const useWeather = () =>{
+
     const [WeatherStats, setWeatherStats] = useState({
         Temp:String,
         Hum:String,
         Prec:String,
         Wind:String
     })
+    
+
 }
 
 const Home = () => {
