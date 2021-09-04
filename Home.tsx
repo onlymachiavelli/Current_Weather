@@ -57,6 +57,7 @@ const useWeather = () =>{
             }
         )
     }, [])
+    return {WeatherGeo, SetWeatherGeo, WeatherStats, setWeatherStats}
 }
 
 const Home = () => {
