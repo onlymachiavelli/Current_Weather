@@ -11,7 +11,7 @@ export const Style = StyleSheet.create({
     coutrytext: {
         color: "#fff",
         marginLeft: 40,
-        marginTop: -17,
+        marginTop: -19,
     },
     header: {
         marginTop: 20,

@@ -4,7 +4,7 @@ import {
     View, Text, ScrollView, TextInput, TouchableOpacity
 } from 'react-native'
 import { Style } from './style'
-import { Current_svg, Search, Loc, NightCloudy } from './svg'
+import { Current_svg, Search, Loc, ShowerRain, ClearSkyDay, ClearSkyNight, Snow, Thunderstorm, FewCloudsDay, FewCloudsNight, ScatteredClouds, BrokenClouyds, Mist } from './svg'
 import DetectGeo from './GeoAPI'
 
 
@@ -85,7 +85,7 @@ const Home = () => {
                     <Text style={{ color: "#fff", marginTop: 5, fontSize: 18, }}>{Location}</Text>
                 </View>
                 <View style={Style.status_svg}>
-                    <NightCloudy />
+                    <FewCloudsNight />
                 </View>
                 <Text style={Style.type}>Night Cloudy</Text>
             </ScrollView>

@@ -123,3 +123,15 @@ export const ShowerRain = () =>{
 
     )
 }
+
+
+export const Mist = () =>{
+    return(
+        
+<svg width="114" height="105" viewBox="0 0 114 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.4 0H34.2V12.3529H11.4V0ZM79.8 92.6471H102.6V105H79.8V92.6471ZM0 30.8824H57V43.2353H0V30.8824ZM68.4 30.8824H102.6V43.2353H68.4V30.8824ZM11.4 61.7647H45.6V74.1176H11.4V61.7647ZM57 61.7647H114V74.1176H57V61.7647ZM45.6 0H114V12.3529H45.6V0ZM0 92.6471H68.4V105H0V92.6471Z" fill="white"/>
+</svg>
+
+    )
+}
+{ShowerRain, NightCloudy, ClearSkyDay, ClearSkyNight, Snow, Thunderstorm, FewCloudsDay, FewCloudsNight, ScatteredClouds, BrokenClouyds}
