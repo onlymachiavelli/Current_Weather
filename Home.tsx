@@ -3,7 +3,7 @@ import {
     View, Text, ScrollView, TextInput, TouchableOpacity
 } from 'react-native'
 import { Style } from './style'
-import { Current_svg, Search, Loc, ShowerRain, ClearSkyDay, ClearSkyNight, Snow, Thunderstorm, FewCloudsDay, FewCloudsNight, ScatteredClouds, BrokenClouds, Mist, Rain, NightCloudy } from './svg'
+import { Current_svg, Search, Loc, ShowerRain, ClearSkyDay, ClearSkyNight, Snow, Thunderstorm, FewCloudsDay, FewCloudsNight, ScatteredClouds, BrokenClouds, Mist, Rain, NightCloudy , Humidity, Wind} from './svg'
 import DetectGeo from './GeoAPI'
 import  GetWeather  from './WeatherAPI'
 const Checkinp = (value:String) => {
@@ -16,16 +16,35 @@ const IsItAm = (icon:String) =>{
     if(icon[2] === "n") return false
     return true
 }
+
+
 const SVGS ={
-    0:{"clear sky":[<ClearSkyDay/>, <ClearSkyNight/>]},
-    1:{"few clouds":[<FewCloudsDay/>, <FewCloudsNight/>]},
-    2:{"scattered clouds":<ScatteredClouds/>},
-    3:{"broken clouds":<BrokenClouds/>},
-    4:{"shower rain" :<ShowerRain/>},
-    5:{"rain":<Rain/>},
-    6:{"thunderstorm":<Thunderstorm/>},
-    7:{"snow":<Snow/>},
-    8:{"mist":<Mist/>}
+    0:{title:"clear sky",svg:[<ClearSkyDay/>, <ClearSkyNight/>]},
+    1:{title:"few clouds",svg:[<FewCloudsDay/>, <FewCloudsNight/>]},
+    2:{title:"scattered clouds",svg:<ScatteredClouds/>},
+    3:{title:"broken clouds",svg:<BrokenClouds/>},
+    4:{title:"shower rain" ,svg:<ShowerRain/>},
+    5:{title:"rain",svg:<Rain/>},
+    6:{title:"thunderstorm",svg:<Thunderstorm/>},
+    7:{title:"snow",svg:<Snow/>},
+    8:{title:"mist",svg:<Mist/>}
+}
+const ReturnSVG = (type:string, icon:string) =>{
+    let select
+    for (let i = 0; i<8;i++){
+        if(SVGS[i].title === type  ){
+            select = i  
+            break
+        }
+    }
+    if(typeof(SVGS[select].svg) === "object") {
+        if(IsItAm(icon)) return SVGS[select].svg[0]
+        else return SVGS[select].svg[1]
+    }
+    else{
+        return SVGS[select].svg
+    }
+    
 }
 const APICALLTIME = () =>{
     let Time
@@ -46,6 +65,9 @@ const useCountry = () =>{
     }, [])
     return {Currentcountry,ToCountry, setCurrentCountry, setToCountry}
 }
+
+
+console.log(SVGS[0])
 const useWeather = () =>{
     
     const [WeatherGeo, SetWeatherGeo] = useState(useCountry().ToCountry)
@@ -54,8 +76,10 @@ const useWeather = () =>{
         Temp:"",
         Hum:"",
         Wind:"",
-        Time:0,
-        Description:""
+        Time:"",
+        Description:"",
+        Icon:"",
+        
     })
     useEffect(()=>{
         GetWeather(WeatherGeo).then(
@@ -65,8 +89,9 @@ const useWeather = () =>{
                         Temp:Response.main.temp,
                         Hum:Response.main.humidity,
                         Wind:Response.wind,
-                        Time:0,
-                        Description:Response.weather[0].description
+                        Time:APICALLTIME(),
+                        Description:Response.weather[0].description,
+                        Icon:Response.weather[0].icon,
                     }
                 )
             }
