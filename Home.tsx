@@ -19,17 +19,16 @@ const IsItAm = (icon:String) =>{
 
 
 const SVGS ={
-    0:{title:"clear sky",svg:[<ClearSkyDay/>, <ClearSkyNight/>]},
-    1:{title:"few clouds",svg:[<FewCloudsDay/>, <FewCloudsNight/>]},
-    2:{title:"scattered clouds",svg:<ScatteredClouds/>},
-    3:{title:"broken clouds",svg:<BrokenClouds/>},
-    4:{title:"shower rain" ,svg:<ShowerRain/>},
-    5:{title:"rain",svg:<Rain/>},
-    6:{title:"thunderstorm",svg:<Thunderstorm/>},
-    7:{title:"snow",svg:<Snow/>},
-    8:{title:"mist",svg:<Mist/>}
+    0:{title:"clear sky",Svv:[<ClearSkyDay/>, <ClearSkyNight/>]},
+    1:{title:"few clouds",Svv:[<FewCloudsDay/>, <FewCloudsNight/>]},
+    2:{title:"scattered clouds",Svv:<ScatteredClouds/>},
+    3:{title:"broken clouds",Svv:<BrokenClouds/>},
+    4:{title:"shower rain" ,Svv:<ShowerRain/>},
+    5:{title:"rain",Svv:<Rain/>},
+    6:{title:"thunderstorm",Svv:<Thunderstorm/>},
+    7:{title:"snow",Svv:<Snow/>},
+    8:{title:"mist",Svv:<Mist/>}
 }
-
 
 const ReturnSVG = (type:string, icon:string) =>{
     let select
@@ -39,12 +38,12 @@ const ReturnSVG = (type:string, icon:string) =>{
             break
         }
     }
-    if(typeof(SVGS[select].svg) === "object") {
-        if(IsItAm(icon)) return SVGS[select].svg[0]
-        else return SVGS[select].svg[1]
+    if(typeof(SVGS[select].Svv) === "object") {
+        if(IsItAm(icon)) return SVGS[select].Svv[0]
+        else return SVGS[select].Svv[1]
     }
     else{
-        return SVGS[select].svg
+        return SVGS[select].Svv
     }
     
 }
@@ -70,41 +69,38 @@ const useCountry = () =>{
 
 const useWeather = () =>{
     
-    const [WeatherGeo, SetWeatherGeo] = useState(useCountry().ToCountry)
+    const {ToCountry, setToCountry} = useCountry()
 
-    const [WeatherStats, setWeatherStats] = useState({
-        Temp:"",
-        Hum:"",
-        Wind:"",
-        Description:"",
-        Icon:"",
-        
-    })
+    const [WeatherStats, setWeatherStats] = useState({})
     useEffect(()=>{
-        GetWeather(WeatherGeo).then(
-            Response =>{
-                setWeatherStats(
-                    {
-                        Temp:Response.main.temp,
-                        Hum:Response.main.humidity,
-                        Wind:Response.wind,
-                        Description:Response.weather[0].description,
-                        Icon:Response.weather[0].icon,
-                    }
-                )
-            }
-        )
-    }, [])
-    return {WeatherGeo, SetWeatherGeo, WeatherStats, setWeatherStats}
+        if (ToCountry) {
+            GetWeather(ToCountry).then(
+                Response =>{
+                    setWeatherStats(
+                        {
+                            Temp:Response.main.temp,
+                            Hum:Response.main.humidity,
+                            Wind:Response.wind.speed,
+                            Description:Response.weather[0].description,
+                            Icon:Response.weather[0].icon,
+                        }
+                    )
+                }
+            )
+        }
+        
+    }, [ToCountry])
+    return {ToCountry, setToCountry, WeatherStats, setWeatherStats}
 }
-let w = useWeather()
-console.log(w.WeatherGeo)
-console.log("fuck")
+
 const Home = () => {
+    const { WeatherStats, } = useWeather()
+    console.log({ WeatherStats})
     let [apiTime, setapiTime] = useState(APICALLTIME())
     let Current_Country = useCountry().Currentcountry
     Current_Country += (Current_Country === "Tunisia" ? " Lkalba" : "")
     const Location = useCountry().ToCountry
+    let SVVGG = ReturnSVG(WeatherStats.Description, WeatherStats.Icon)
 
 
     return (
@@ -140,17 +136,20 @@ const Home = () => {
                     <Text style={{ color: "#fff", marginTop: 5, fontSize: 18, }}>{Location}</Text>
                 </View>
                 <View style={Style.status_svg}>
-                    {SVGS[1].svg[1]}
+                    {
+                        
+                        SVVGG
+                    }
                 </View>
                 <Text style={Style.type}>Night Cloudy</Text>
                 <View style={Style.descicons}> 
                     <View style={Style.d}>
                         <Humidity/>
-                        <Text  style={Style.dtext}>Humidity: {useWeather().WeatherStats.Hum + " %"}</Text>
+                        <Text  style={Style.dtext}>Humidity: {WeatherStats?.Hum + " %"}</Text>
                     </View>
                     <View style={Style.d}>
                         <Wind/>
-                        <Text  style={Style.dtext}>Wind : {useWeather().WeatherStats.Wind}</Text> 
+                        <Text  style={Style.dtext}>Wind : {WeatherStats?.Wind + "KM/H"}</Text> 
                     </View>
                 </View>
             </ScrollView>
