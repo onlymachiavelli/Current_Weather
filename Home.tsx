@@ -29,6 +29,8 @@ const SVGS ={
     7:{title:"snow",svg:<Snow/>},
     8:{title:"mist",svg:<Mist/>}
 }
+
+
 const ReturnSVG = (type:string, icon:string) =>{
     let select
     for (let i = 0; i<8;i++){
@@ -52,7 +54,6 @@ const APICALLTIME = () =>{
     Time = (date.getHours() < 10 ? String(0+date.getHours()) : String(date.getHours())) + ":" + (date.getMinutes() < 10 ? String(0+date.getMinutes()) : String(date.getMinutes()))
     return Time
 }
-console.log(APICALLTIME())
 const useCountry = () =>{
     const [Currentcountry, setCurrentCountry] = useState("")
     const [ToCountry, setToCountry] = useState("")
@@ -67,7 +68,6 @@ const useCountry = () =>{
 }
 
 
-console.log(SVGS[0])
 const useWeather = () =>{
     
     const [WeatherGeo, SetWeatherGeo] = useState(useCountry().ToCountry)
@@ -97,7 +97,9 @@ const useWeather = () =>{
     }, [])
     return {WeatherGeo, SetWeatherGeo, WeatherStats, setWeatherStats}
 }
-
+let w = useWeather()
+console.log(w.WeatherGeo)
+console.log("fuck")
 const Home = () => {
     let [apiTime, setapiTime] = useState(APICALLTIME())
     let Current_Country = useCountry().Currentcountry
@@ -144,11 +146,11 @@ const Home = () => {
                 <View style={Style.descicons}> 
                     <View style={Style.d}>
                         <Humidity/>
-                        <Text  style={Style.dtext}>Humidity: {}</Text>
+                        <Text  style={Style.dtext}>Humidity: {useWeather().WeatherStats.Hum + " %"}</Text>
                     </View>
                     <View style={Style.d}>
                         <Wind/>
-                        <Text  style={Style.dtext}>Wind : {}</Text> 
+                        <Text  style={Style.dtext}>Wind : {useWeather().WeatherStats.Wind}</Text> 
                     </View>
                 </View>
             </ScrollView>
