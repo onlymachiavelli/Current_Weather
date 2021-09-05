@@ -87,5 +87,19 @@ export const Style = StyleSheet.create({
         fontSize: 20,
         alignSelf: "center",
         marginTop: 20,
+    },
+    descicons :{
+        alignSelf:"center",
+        width:"70%",
+        height:"auto",
+        textAlign:"left",
+    },
+    d:{
+        marginTop:25,
+    },
+    dtext:{
+        color:"#fff",
+        marginLeft:40,
+        marginTop:-22,
     }
 })

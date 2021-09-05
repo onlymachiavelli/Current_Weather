@@ -76,7 +76,6 @@ const useWeather = () =>{
         Temp:"",
         Hum:"",
         Wind:"",
-        Time:"",
         Description:"",
         Icon:"",
         
@@ -89,7 +88,6 @@ const useWeather = () =>{
                         Temp:Response.main.temp,
                         Hum:Response.main.humidity,
                         Wind:Response.wind,
-                        Time:APICALLTIME(),
                         Description:Response.weather[0].description,
                         Icon:Response.weather[0].icon,
                     }
@@ -105,6 +103,7 @@ const Home = () => {
     let Current_Country = useCountry().Currentcountry
     Current_Country += (Current_Country === "Tunisia" ? " Lkalba" : "")
     const Location = useCountry().ToCountry
+
 
     return (
         <View style={Style.Home_container} >
@@ -139,9 +138,19 @@ const Home = () => {
                     <Text style={{ color: "#fff", marginTop: 5, fontSize: 18, }}>{Location}</Text>
                 </View>
                 <View style={Style.status_svg}>
-                    {SVGS[1]['few clouds'][1]}
+                    {SVGS[1].svg[1]}
                 </View>
                 <Text style={Style.type}>Night Cloudy</Text>
+                <View style={Style.descicons}> 
+                    <View style={Style.d}>
+                        <Humidity/>
+                        <Text  style={Style.dtext}>Humidity: {}</Text>
+                    </View>
+                    <View style={Style.d}>
+                        <Wind/>
+                        <Text  style={Style.dtext}>Wind : {}</Text> 
+                    </View>
+                </View>
             </ScrollView>
         </View>
     )
